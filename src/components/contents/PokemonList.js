@@ -19,7 +19,12 @@ const PokemonList = (props) => {
   console.log(pokemonData);
   return (
     <div>
-      {pokemonData && pokemonData.map((data) => <Pokemon pokemon={data} />)}
+      {pokemonData &&
+        pokemonData.map((data, index) => (
+          <div key={index}>
+            <Link to={`/pokemon/${index}`}>{data.name}</Link>
+          </div>
+        ))}
     </div>
   );
 };

@@ -37,8 +37,8 @@ const request = async (api, method) => {
 };
 
 export const PokeAPI = {
-  pokemon: (name) => {
-    return request(`pokemon/${name}`, methodOption.get());
+  pokemon: (param) => {
+    return request(`pokemon/${param}`, methodOption.get());
   },
 
   pokemonList: (offest, limit) => {

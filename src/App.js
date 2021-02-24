@@ -1,6 +1,6 @@
 import "./App.css";
-import Main from "./route/Main";
-import Detail from "./route/Detail";
+import Main from "./routes/Main";
+import Detail from "./routes/Detail";
 import { Route, BrowserRouter } from "react-router-dom";
 
 function App() {

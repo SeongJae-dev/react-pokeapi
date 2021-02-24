@@ -26,16 +26,8 @@ export default function Main() {
     }
     console.log(scrollHeight, scrollTop, clientHeight);
   };
-
-  const [pokemon, setPokemon] = useState(null);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
-    const fetchData = async () => {
-      const res = await PokeAPI.pokemon("eevee");
-      setPokemon(res);
-    };
-    fetchData();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -45,8 +37,6 @@ export default function Main() {
   return (
     <PokeContent>
       <PokemonList />
-      {/* <div>{pokemon.forms.name}</div> */}
-      {/* {pokemon && <Pokemon key={pokemon.id} pokemon={pokemon} />} */}
     </PokeContent>
   );
 }

@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { PokeAPI } from "../../utils/API";
 
-const Pokemon = ({ pokemon }) => {
-  console.log(pokemon);
-  // const { sprites } = pokemon;
-  // const pokeIcons = Object.values(sprites)
-  //   .filter((value) => {
-  //     return value !== null && typeof value === "string";
-  //   })
-  //   .sort();
+const Pokemon = (props) => {
+  console.log(props);
+  const [pokemon, setPokemon] = useState(null);
+  const { pokemonNo } = props;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await PokeAPI.pokemon(Number(pokemonNo) + 1);
+      setPokemon(res);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div>
       {pokemon && <label>{pokemon.name}</label>}
-      {/* {sprites && pokeIcons.map((icon) => <img src={icon} />)} */}
+      {pokemon && <img src={pokemon.sprites.front_default} />}
     </div>
   );
 };
